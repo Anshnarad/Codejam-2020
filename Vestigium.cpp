@@ -53,4 +53,59 @@ In Sample Case #3, the leftmost and rightmost columns have repeated elements.
 
 // Solution :-
 
-
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    int test=t;
+    while(t--)
+    {
+        cout<<"Case #"<<test-t<<": ";
+        int n;
+        cin>>n;
+        int arr[n+1][n+1];
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                cin>>arr[i][j];
+            }
+        }
+        int sum=0;
+        int r=0;
+        int c=0;
+        set<int>rs;
+        set<int>cs;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                rs.insert(arr[i][j]);
+            }
+            if(rs.size()!=n)
+            {
+                r++;
+            }
+            rs.clear();
+        }
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                cs.insert(arr[j][i]);
+            }
+            if(cs.size()!=n)
+            {
+                c++;
+            }
+            cs.clear();
+        }
+        for(int i=0;i<n;i++)
+        {
+            sum+=arr[i][i];
+        }
+        cout<<sum<<" "<<r<<" "<<c<<endl;
+    }
+}
